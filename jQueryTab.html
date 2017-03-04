@@ -1,0 +1,117 @@
+<!-- 
+Use JQuery, HTML, and CSS to create a tabbed interface that shows content based on what you click and highlights whatever you click. 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQueryTab Exercise</title>
+	<style type="text/css">
+		html, body {
+			height: 100%;
+			width: 100%; 
+		}
+
+		.container {
+			padding-top: 1vh;
+			overflow: auto;
+		}
+
+		#tab-links {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.tab-content {
+			/*position: fixed;*/
+			height: 100vh;
+			width: 100%;
+			display: none;
+			border: 2px black solid;
+			position: relative;
+		}
+
+		.tab-label, #add-tab {
+			display: inline-block; 
+			width: 100%;
+			height: 1.5vh;
+			padding: 1%;
+			border: 2px black solid;
+		}
+
+		#add-tab {
+			width: 50%;
+		}
+
+		.selected {
+			display: inline-block; 
+			border: 2px pink solid;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="tab-links">
+			<div class="tab-label">Tab #1</div>
+			<div class="tab-label">Tab #2</div>
+			<div class="tab-label">Tab #3</div>
+			<div id="add-tab">Add a tab</div>
+		</div>
+		<div id="tab-display">
+			<div class="tab-content">
+				<h1>You have selected tab #1.</h1>
+			</div> 
+			<div class="tab-content">
+				<h1>You have selected tab #2.</h1>
+			</div> 
+			<div class="tab-content">
+				<h1>You have selected tab #3.</h1>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="helperlibs/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// function addTabListener(tab) {
+		// 	tab.on('click', function() {
+		// 		//toggles the current selection
+		// 		$(".selected").toggleClass('selected');
+		// 		//puts the selected content into view
+		// 		tab.toggleClass('selected');
+		// 		$(`#tab-display .tab-content:nth-child(${i + 1})`).toggleClass('selected');
+		// 	});
+		// };
+
+		$('.tab-label').each(function(i) {
+			$(this).on('click', function() {
+				//toggles the current selection
+				$(".selected").toggleClass('selected');
+				//puts the selected content into view
+				$(this).toggleClass('selected');
+				$(`#tab-display .tab-content:nth-child(${i + 1})`).toggleClass('selected');
+			});
+		});
+
+		$('#add-tab').on('click', function() {
+			var tabNumber = $('.tab-label').length + 1;
+			var newTab = $(`<div class="tab-label">Tab #${tabNumber}</div>`);
+			$(newTab).insertBefore(this);
+			var newContent = $(`<div class="tab-content">
+				<h1>You have selected tab #${tabNumber}.</h1>
+				</div>`);
+			$('#tab-display').append(newContent);
+
+			//refactor later 
+			newTab.on('click', function() {
+				$(".selected").toggleClass('selected');
+				//puts the selected content into view
+				newTab.toggleClass('selected');
+				$(`#tab-display .tab-content:nth-child(${tabNumber})`).toggleClass('selected');
+			})
+		});
+	});
+</script>
+</html>
