@@ -1,0 +1,27 @@
+{
+  "name": "code-exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anagram.js",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csjiang/code-exercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csjiang/code-exercises/issues"
+  },
+  "homepage": "https://github.com/csjiang/code-exercises#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.6.1",
+    "jasmine-node": "^1.14.5",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0"
+  }
+}
