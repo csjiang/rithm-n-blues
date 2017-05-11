@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'hackerrank/ctci/merge-sort.js',
+      'interviewQs/*.js',
       'test/**/*.spec.js'
     ],
 
