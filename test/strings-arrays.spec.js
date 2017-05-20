@@ -72,3 +72,13 @@ describe('URLifyInPlace', function() {
 		expect(URLifyInPlace({0: 'H', 1: 'e', 2: 'l', 3: 'l', 4: 'o', 5: ' ', 6: 'W', 7: 'o', 8: 'r', 9: 'l', 10: 'd', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' '}, 16)).toEqual({ 0: 'H', 1: 'e', 2: 'l', 3: 'l', 4: 'o', 5: '%', 6: '2', 7: '0', 8: 'W', 9: 'o', 10: 'r', 11: 'l', 12: 'd', 13: '%', 14: '2', 15: '0', 16: '%', 17: '2', 18: '0', 19: '%', 20: '2', 21: '0', 22: '%', 23: '2', 24: '0', 25: '%', 26: '2', 27: '0' });
 	});
 });
+
+describe('oneAway', function() {
+	it('correctly identifies whether two strings are one or zero edits away', function() {
+		expect(oneAway('pale', 'ple')).toBe(true);
+		expect(oneAway('pales', 'pale')).toBe(true);
+		expect(oneAway('pale', 'bale')).toBe(true);
+		expect(oneAway('pale', 'bake')).toBe(false);
+		expect(oneAway('pleonasm', 'pleonasmus')).toBe(false);
+	});
+});

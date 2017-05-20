@@ -69,3 +69,31 @@ function URLifyInPlace(strAsObject, length) {
 	}
 	return strAsObject;
 }
+
+// there are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. given two strings, write a function to check if they are 1 or 0 edits away.
+function oneAway(s1, s2) {
+	var l1 = s1.length;
+	var l2 = s2.length;
+	if (Math.abs(l1 - l2) > 1) return false;
+
+	var diff = [];
+	if (l1 === l2) {
+		for (var i = 0; i < l1; i++) {
+			if (s1[i] !== s2[i]) diff.push(i);
+		}
+	} else {
+		var long = l1 > l2 ? s1 : s2;
+		var short = l1 > l2 ? s2 : s1;
+
+		for (var i = 0, j = 0; i < long.length; ) {
+			if (long[i] !== short[j]) {
+				diff.push(i);
+				i += 1;
+			} else {
+				i += 1;
+				j += 1;
+			}
+		}
+	}
+	return diff.length <= 1;
+}
