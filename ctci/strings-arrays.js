@@ -35,3 +35,37 @@ function checkPermsSorted(s1, s2) { //same constraints, but this solution compar
 	return s1.split('').sort().join('') === s2.split('').sort().join('');
 }
 
+
+// write a method to replace all spaces in a string with '%20'.
+function URLify(str, length) {
+	var result = '';
+	for (var i = 0; i < length; i++) {
+		str[i] === ' '
+		? result += '%20'
+		: result += str[i];
+	}
+	return result;
+}
+
+function URLify2(str, length) {
+	return str.replace(/ /g, '%20');
+}
+
+function URLifyInPlace(strAsObject, length) {
+	var finalLength = length;
+	for (var i = 0; i < length; i++) {
+		if (strAsObject[i] === ' ') finalLength += 2;
+	}
+	for (var i = length - 1; i >= 0; i--) {
+		if (strAsObject[i] === ' ') {
+			strAsObject[finalLength - 1] = '0';
+			strAsObject[finalLength - 2] = '2';
+			strAsObject[finalLength - 3] = '%';
+			finalLength -= 3;
+		} else {
+			strAsObject[finalLength - 1] = strAsObject[i];
+			finalLength -= 1;
+		}
+	}
+	return strAsObject;
+}
