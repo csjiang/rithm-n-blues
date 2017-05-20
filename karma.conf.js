@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'hackerrank/ctci/merge-sort.js',
       'interviewQs/*.js',
+      'ctci/*.js',
       'test/**/*.spec.js'
     ],
 
